@@ -15,7 +15,7 @@ public class LambdaQuestion {
 //        int[] nums= {10,20,30,50,40,32,32};
 //        List<Integer> s=Arrays.stream(nums).boxed().collect(Collectors.toList());
         ;
-        String s1 = "bsbbccccnsjbdn";
+        String s1 = "ccccbbbbnsjbdn";
         Set<Character> set = new HashSet<>();
         Optional<Map.Entry<Character, Long>> news = s1.chars().mapToObj(c -> (char) c)
                 .collect(Collectors.groupingBy(x -> x, () -> new HashMap<>(), Collectors.counting()))
@@ -27,6 +27,7 @@ public class LambdaQuestion {
 //                    }
 //                    if(a.getValue()>b.getValue())return a;
 //                    else return b;});
+                //it gives b as it is in asceding order
                 .max(Map.Entry.<Character, Long>comparingByValue()
                         .thenComparing((e1, e2) -> e2.getKey().compareTo(e1.getKey())));
 //
@@ -45,7 +46,7 @@ public class LambdaQuestion {
         List<Employee> list = List.of(e, e1, e2, e3, e4, e5, e6, e7, e8, e9);
         Map<String, Integer> nt=list.stream()
                 .filter(n->n.getSal()>=list.stream().map(Employee::getSal).collect(Collectors.averagingDouble(x->x))).
-                collect(Collectors.groupingBy(x->x.getName(),Collectors.summingInt(Employee::getSal)));
+                collect(Collectors.groupingBy(Employee::getName,Collectors.summingInt(Employee::getSal)));
         log.info("double {}",nt);
         Map<String, String> result = list.stream()
                 .collect(Collectors.groupingBy(
