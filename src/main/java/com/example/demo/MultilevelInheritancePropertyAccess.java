@@ -14,7 +14,7 @@ class Child extends Parent{
         return ((Base) this).x;
     }
 }
-public class Main {
+public class MultilevelInheritancePropertyAccess {
     public static void main(String[] args) {
         Child n = new Child();
         System.out.println(n.getx());

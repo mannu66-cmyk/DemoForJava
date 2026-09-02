@@ -1,12 +1,12 @@
 package com.example.demo;
 
-public class SharedFlag implements Runnable{
+public class SharedFlagThroughVolatile implements Runnable{
     int x=0;
-    SharedFlag(int x){
+    SharedFlagThroughVolatile(int x){
         this.x=x;
     }
     // Correct usage: visibility is all we need here
-    private  boolean keepRunning = true;
+    private  volatile boolean keepRunning = true;
 
     public void stop() { keepRunning = false; }
     public void run() {
@@ -18,7 +18,7 @@ public class SharedFlag implements Runnable{
     }
 
     public static void main(String[] args) throws InterruptedException {
-        SharedFlag s = new SharedFlag(15);
+        SharedFlagThroughVolatile s = new SharedFlagThroughVolatile(15);
 
         new Thread(s,"run1").start();
         new Thread(s,"run32").start();

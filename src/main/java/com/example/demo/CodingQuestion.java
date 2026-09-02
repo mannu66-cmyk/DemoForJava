@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
-public class Solution {
+public class CodingQuestion {
     public int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0 || grid[0].length == 0) {
             return 0;
@@ -164,7 +164,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solver = new Solution();
+        CodingQuestion solver = new CodingQuestion();
 
         // Test Case 1: 3 distinct islands
         char[][] grid1 = {
