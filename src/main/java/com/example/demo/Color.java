@@ -14,5 +14,8 @@ public enum Color {
     public static void main(String[] args) {
 
         System.out.println("run enum " + Arrays.toString(Color.values()));
+        System.out.println(Color.Red.getValue());
+
+
     }
 }

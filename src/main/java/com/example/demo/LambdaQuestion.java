@@ -33,16 +33,16 @@ public class LambdaQuestion {
 //
         System.out.println(news.get().getKey());
 
-        Employee e = new Employee("chitiya", 20000, "IT");
-        Employee e1 = new Employee("bada chitiya", 30000, "CS");
-        Employee e2 = new Employee("chota chitiya", 40000, "IT");
-        Employee e3 = new Employee("random chitiya", 60000, "CS");
-        Employee e4 = new Employee("kala chitiya", 70000, "IT");
-        Employee e5 = new Employee("andha chitiya", 20000, "CS");
-        Employee e6 = new Employee("behra chitiya", 30000, "IT");
-        Employee e7 = new Employee("nata chitiya", 40000, "CS");
-        Employee e8 = new Employee("lamba chitiya", 60023, "IT");
-        Employee e9 = new Employee("gora chitiya", 70001, "CS");
+        Employee e = new Employee(10,"chitiya", 20000, "IT");
+        Employee e1 = new Employee(10,"chitiya", 60000, "IT");
+        Employee e2 = new Employee(90,"chota chitiya", 40000, "IT");
+        Employee e3 = new Employee(80,"random chitiya", 60000, "CS");
+        Employee e4 = new Employee(70,"kala chitiya", 70000, "IT");
+        Employee e5 = new Employee(60,"andha chitiya", 20000, "CS");
+        Employee e6 = new Employee(10,"behra chitiya", 30000, "IT");
+        Employee e7 = new Employee(20,"nata chitiya", 40000, "CS");
+        Employee e8 = new Employee(40,"lamba chitiya", 60023, "IT");
+        Employee e9 = new Employee(50,"gora chitiya", 70001, "CS");
         List<Employee> list = List.of(e, e1, e2, e3, e4, e5, e6, e7, e8, e9);
         Map<String, Integer> nt=list.stream()
                 .filter(n->n.getSal()>=list.stream().map(Employee::getSal).collect(Collectors.averagingDouble(x->x))).
@@ -91,6 +91,19 @@ public class LambdaQuestion {
         Map<Boolean, List<Integer>> l = list11.stream().collect(Collectors.partitioningBy(x -> x % 2 == 0));
         System.out.println(l.get(true));
 
+        Set en= new HashSet();
+        //it will treat every object as unique if your class doesn't override the equals and hashcode method
+        // if your based on the id the hashcode is same and equal giving true then it will treat them as similar object
+        // if equals return false it will treat them unique
+        en.addAll(Arrays.asList(e,e1,e2,e3,e4,e5,e6,e7,e8,e9));
+        System.out.println("Ssize"+" "+en.size());
+        Map<Employee, String> s= new HashMap<>();
+        s.put(e,"developer");
+        s.put(e1,"new dev");
+        System.out.println(s.get(e4));
+        for( Map.Entry<Employee, String> sr: s.entrySet()){
+            System.out.println(sr.getKey().getName()+" "+ sr.getKey().id+" "+ sr.getValue() );
+        }
     }
 }
 
