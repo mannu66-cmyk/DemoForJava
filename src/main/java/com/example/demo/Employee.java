@@ -51,4 +51,14 @@ public class Employee {
 
         return Objects.hash(id, sal, name);
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", sal=" + sal +
+                ", name='" + name + '\'' +
+                ", dep='" + dep + '\'' +
+                '}';
+    }
 }

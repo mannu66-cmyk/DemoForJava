@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class LambdaQuestion {
     private static final Logger log = LoggerFactory.getLogger(LambdaQuestion.class);
@@ -40,7 +41,7 @@ public class LambdaQuestion {
         Employee e4 = new Employee(70,"kala chitiya", 70000, "IT");
         Employee e5 = new Employee(60,"andha chitiya", 20000, "CS");
         Employee e6 = new Employee(10,"behra chitiya", 30000, "IT");
-        Employee e7 = new Employee(20,"nata chitiya", 40000, "CS");
+        Employee e7 = new Employee(20,"nata chitiya", 70001, "CS");
         Employee e8 = new Employee(40,"lamba chitiya", 60023, "IT");
         Employee e9 = new Employee(50,"gora chitiya", 70001, "CS");
         List<Employee> list = List.of(e, e1, e2, e3, e4, e5, e6, e7, e8, e9);
@@ -104,6 +105,22 @@ public class LambdaQuestion {
         for( Map.Entry<Employee, String> sr: s.entrySet()){
             System.out.println(sr.getKey().getName()+" "+ sr.getKey().id+" "+ sr.getValue() );
         }
+
+        Map<String, Employee> results =
+                list.stream()
+                        .collect(Collectors.groupingBy(
+                                Employee::getDep,
+                                Collectors.collectingAndThen(
+                                        Collectors.maxBy(
+                                        Comparator.comparingDouble(Employee::getSal).thenComparing((y2,y1)->y1.getName().compareTo(y2.getName()))
+
+                                ),Optional::get
+                        )));
+        System.out.println(results.get("CS").toString());
+
+
+
+
     }
 }
 

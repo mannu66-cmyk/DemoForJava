@@ -253,11 +253,13 @@ public class LinkedListDemo {
             // Save next node
             Node next = current.next;
 
+            //current.next= previous //we can use this line instead of two line writen below
+            Node nodecurrent= current;
             // Reverse the pointer
-            current.next = previous;
+            nodecurrent.next = previous;
 
             // Move previous
-            previous = current;
+            previous = nodecurrent;
 
             // Move current
             current = next;
@@ -375,7 +377,7 @@ public class LinkedListDemo {
 
         System.out.println("\nUpdate 30 -> 35:");
 
-        list.update(30, 35);
+        list.update(30, 38);
 
         list.printList();
 
